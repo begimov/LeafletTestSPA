@@ -1,4 +1,6 @@
 export default {
-    markers: [],
+    markers: [
+        [51.5, -0.086]
+    ],
     isLoading: false,
   }
