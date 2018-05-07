@@ -51496,8 +51496,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    selectedPoint: null,
-    isLoading: false
+  selectedPoint: null,
+  options: {
+    categories: [{ id: 1, name: 'Категория 1' }, { id: 2, name: 'Категория 2' }]
+  },
+  isLoading: false
 });
 
 /***/ }),
