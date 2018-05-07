@@ -1,6 +1,6 @@
 export default {
     selectedPoint: null,
-    selectedPointCategory: null,
+    selectedPointCategory: 0,
     options: {
       categories: [
         { id:1, name: 'Категория 1'},
