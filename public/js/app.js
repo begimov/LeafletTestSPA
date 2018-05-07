@@ -50947,17 +50947,13 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_map__ = __webpack_require__(63);
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
     methods: {
-        initLeaflet: function initLeaflet() {
-            var mymap = Leaflet.map('mapid').setView([51.505, -0.09], 13);
-            Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmVnaW1vdiIsImEiOiJjamd3MzZkNG4xcGVvMndvZms4b3dweGQ3In0.jJoQoXTWOnFA5hBW83VReg', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox.streets',
-                accessToken: 'your.mapbox.access.token'
-            }).addTo(mymap);
-        }
+        //
     },
     mounted: function mounted() {
         this.initLeaflet();
@@ -51302,6 +51298,41 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    methods: {
+        initLeaflet: function initLeaflet() {
+            var mymap = Leaflet.map('mapid').setView([51.505, -0.09], 13);
+
+            Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmVnaW1vdiIsImEiOiJjamd3MzZkNG4xcGVvMndvZms4b3dweGQ3In0.jJoQoXTWOnFA5hBW83VReg', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'your.mapbox.access.token'
+            }).addTo(mymap);
+
+            mymap.on('click', onMapClick);
+
+            function onMapClick(e) {
+                var popup = Leaflet.popup();
+                popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
+            }
+        }
+    }
+});
 
 /***/ })
 /******/ ]);
