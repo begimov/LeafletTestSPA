@@ -32,7 +32,8 @@ export default {
                         "You clicked the map at " + e.latlng.toString() 
                     )
                     .openOn(mymap);
-                this.test()
+                    
+                this.updateSelectedPoint(e.latlng);
             });
         }
     },

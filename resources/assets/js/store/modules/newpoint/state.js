@@ -1,4 +1,4 @@
 export default {
-    point: null,
+    selectedPoint: null,
     isLoading: false,
   }

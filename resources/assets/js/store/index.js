@@ -1,5 +1,5 @@
 import map from './modules/map'
-import map from './modules/newpoint'
+import newpoint from './modules/newpoint'
 import Vue from 'vue'
 import Vuex from 'vuex'
 

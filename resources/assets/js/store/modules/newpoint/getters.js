@@ -1,5 +1,5 @@
 export default {
-    point(state) {
-        return state.point;
+    selectedPoint(state) {
+        return state.selectedPoint;
     }
 }

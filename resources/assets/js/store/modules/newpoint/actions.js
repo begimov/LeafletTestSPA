@@ -1,5 +1,5 @@
 export default {
-    updatePoint({ commit, dispatch}, payload) {
-        commit('updatePoint');
+    updateSelectedPoint({ commit, dispatch}, payload) {
+        commit('updateSelectedPoint', payload);
     }
 }
