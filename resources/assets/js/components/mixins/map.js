@@ -29,10 +29,10 @@ export default {
                 const popup = Leaflet.popup();
                 popup.setLatLng(e.latlng)
                     .setContent(
-                        "You clicked the map at " + e.latlng.toString() 
+                        "Новая точка"
                     )
                     .openOn(mymap);
-                    
+
                 this.updateSelectedPoint(e.latlng);
             });
         }

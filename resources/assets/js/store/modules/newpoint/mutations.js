@@ -1,5 +1,5 @@
 export default {
     updateSelectedPoint(state, payload) {
-        this.state.selectedPoint = payload;
+        state.selectedPoint = payload;
     }
 }

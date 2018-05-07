@@ -2,6 +2,16 @@
     <div class="row">
         <div class="col">
             <div id="mapid" class="leaflet-map"></div>
+            <div class="card m-2" v-if="selectedPoint">
+                <div class="card-body">
+                    <h2>Отмечена новая точка:</h2>
+                    <p class="lead">
+                        Широта: {{ selectedPoint.lat }}<br/>
+                        Долгота: {{ selectedPoint.lng }}
+                    </p>
+                    <p><a href="#" @click.prevent="savePoint" class="btn btn-dark">СОХРАНИТЬ</a></p>
+                </div>
+            </div>
         </div>
     </div>
 </template>

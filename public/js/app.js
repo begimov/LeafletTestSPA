@@ -51056,20 +51056,51 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("div", { staticClass: "leaflet-map", attrs: { id: "mapid" } })
-      ])
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "leaflet-map", attrs: { id: "mapid" } }),
+      _vm._v(" "),
+      _vm.selectedPoint
+        ? _c("div", { staticClass: "card m-2" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h2", [_vm._v("Отмечена новая точка:")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "lead" }, [
+                _vm._v(
+                  "\n                    Широта: " +
+                    _vm._s(_vm.selectedPoint.lat)
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                    Долгота: " +
+                    _vm._s(_vm.selectedPoint.lng) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-dark",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.savePoint($event)
+                      }
+                    }
+                  },
+                  [_vm._v("СОХРАНИТЬ")]
+                )
+              ])
+            ])
+          ])
+        : _vm._e()
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -51331,7 +51362,7 @@ if (false) {
 
             mymap.on('click', function (e) {
                 var popup = Leaflet.popup();
-                popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
+                popup.setLatLng(e.latlng).setContent("Новая точка").openOn(mymap);
 
                 _this.updateSelectedPoint(e.latlng);
             });
@@ -51412,9 +51443,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint'])),
-    computed: {
-        //
-    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint'])),
     mounted: function mounted() {
         this.initInteractiveMap();
     }
@@ -51484,7 +51513,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     updateSelectedPoint: function updateSelectedPoint(state, payload) {
-        this.state.selectedPoint = payload;
+        state.selectedPoint = payload;
     }
 });
 

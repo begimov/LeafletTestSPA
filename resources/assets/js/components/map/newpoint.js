@@ -9,7 +9,9 @@ export default {
         ])
     },
     computed: {
-        //
+        ...mapGetters('newpoint', [
+            'selectedPoint'
+        ])
     },
     mounted() {
         this.initInteractiveMap();
