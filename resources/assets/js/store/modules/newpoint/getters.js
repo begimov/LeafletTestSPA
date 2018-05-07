@@ -4,5 +4,8 @@ export default {
     },
     categories(state) {
         return state.options.categories;
+    },
+    selectedPointCategory(state) {
+        return state.selectedPointCategory;
     }
 }

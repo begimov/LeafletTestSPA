@@ -5,14 +5,24 @@ export default {
     mixins: [Map],
     methods: {
         ...mapActions('newpoint', [
-            'updateSelectedPoint'
+            'updateSelectedPoint',
+            'updateSelectedPointCategory'
         ])
     },
     computed: {
         ...mapGetters('newpoint', [
             'selectedPoint',
-            'categories'
-        ])
+            'categories',
+            'selectedPointCategory'
+        ]),
+        'selectedCategory': {
+            get () {
+              return this.selectedPointCategory
+            },
+            set (value) {
+              this.updateSelectedPointCategory(value)
+            }
+        },
     },
     mounted() {
         this.initInteractiveMap();

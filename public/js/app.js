@@ -51081,7 +51081,32 @@ var render = function() {
               _c("p", [
                 _c(
                   "select",
-                  { staticClass: "custom-select" },
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.selectedCategory,
+                        expression: "selectedCategory"
+                      }
+                    ],
+                    staticClass: "custom-select",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.selectedCategory = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
                   _vm._l(_vm.categories, function(category) {
                     return _c(
                       "option",
@@ -51475,8 +51500,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint'])),
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint', 'categories'])),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint', 'updateSelectedPointCategory'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint', 'categories', 'selectedPointCategory']), {
+        'selectedCategory': {
+            get: function get() {
+                return this.selectedPointCategory;
+            },
+            set: function set(value) {
+                this.updateSelectedPointCategory(value);
+            }
+        }
+    }),
     mounted: function mounted() {
         this.initInteractiveMap();
     }
@@ -51529,6 +51563,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     categories: function categories(state) {
         return state.options.categories;
+    },
+    selectedPointCategory: function selectedPointCategory(state) {
+        return state.selectedPointCategory;
     }
 });
 
@@ -51543,6 +51580,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             dispatch = _ref.dispatch;
 
         commit('updateSelectedPoint', payload);
+    },
+    updateSelectedPointCategory: function updateSelectedPointCategory(_ref2, payload) {
+        var commit = _ref2.commit,
+            dispatch = _ref2.dispatch;
+
+        commit('updateSelectedPointCategory', payload);
     }
 });
 
@@ -51554,6 +51597,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
     updateSelectedPoint: function updateSelectedPoint(state, payload) {
         state.selectedPoint = payload;
+    },
+    updateSelectedPointCategory: function updateSelectedPointCategory(state, payload) {
+        state.selectedPointCategory = payload;
     }
 });
 

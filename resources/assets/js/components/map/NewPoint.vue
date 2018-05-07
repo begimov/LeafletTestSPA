@@ -10,7 +10,7 @@
                         Долгота: {{ selectedPoint.lng }}
                     </p>
                     <p>
-                        <select class="custom-select">
+                        <select class="custom-select" v-model="selectedCategory">
                             <option :value="category.id" v-for="category in categories" :key="category.id">{{ category.name }}</option>
                         </select>
                     </p>
