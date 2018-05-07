@@ -50962,7 +50962,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])('map', ['markers'])),
     mounted: function mounted() {
-        this.initLeaflet();
+        this.initDisplayMap();
     }
 });
 
@@ -50974,14 +50974,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col" }, [
-      _c("div", { staticClass: "leaflet-map", attrs: { id: "mapid" } }),
-      _vm._v("\n        " + _vm._s(_vm.markers) + "\n    ")
-    ])
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("div", { staticClass: "leaflet-map", attrs: { id: "mapid" } })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50998,7 +51004,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(49)
+var __vue_script__ = __webpack_require__(69)
 /* template */
 var __vue_template__ = __webpack_require__(50)
 /* template functional */
@@ -51039,27 +51045,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        //
-    }
-});
-
-/***/ }),
+/* 49 */,
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51075,7 +51061,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [_vm._v("\n        New Point\n    ")])
+      _c("div", { staticClass: "col" }, [
+        _c("div", { staticClass: "leaflet-map", attrs: { id: "mapid" } })
+      ])
     ])
   }
 ]
@@ -51314,7 +51302,7 @@ if (false) {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     methods: {
-        initLeaflet: function initLeaflet() {
+        initBaseMap: function initBaseMap() {
             var mymap = Leaflet.map('mapid').setView([51.505, -0.09], 13);
 
             Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmVnaW1vdiIsImEiOiJjamd3MzZkNG4xcGVvMndvZms4b3dweGQ3In0.jJoQoXTWOnFA5hBW83VReg', {
@@ -51323,6 +51311,18 @@ if (false) {
                 id: 'mapbox.streets',
                 accessToken: 'your.mapbox.access.token'
             }).addTo(mymap);
+
+            return mymap;
+        },
+        initDisplayMap: function initDisplayMap() {
+            var mymap = this.initBaseMap();
+
+            this.markers.forEach(function (marker) {
+                Leaflet.marker(marker).addTo(mymap).bindPopup("Широта: " + marker[0] + "<br/>Долгота: " + marker[1]);
+            });
+        },
+        initInteractiveMap: function initInteractiveMap() {
+            var mymap = this.initBaseMap();
 
             mymap.on('click', onMapClick);
 
@@ -51364,7 +51364,7 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    markers: [[51.5, -0.086]],
+    markers: [[51.5, -0.086], [51.51, -0.087]],
     isLoading: false
 });
 
@@ -51390,6 +51390,30 @@ if (false) {
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_map__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(42);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
+    methods: {
+        //
+    },
+    computed: {
+        //
+    },
+    mounted: function mounted() {
+        this.initInteractiveMap();
+    }
+});
 
 /***/ })
 /******/ ]);

@@ -1,15 +1,9 @@
 <template>
     <div class="row">
         <div class="col">
-            New Point
+            <div id="mapid" class="leaflet-map"></div>
         </div>
     </div>
 </template>
 
-<script>
-    export default {
-        mounted() {
-            //
-        }
-    }
-</script>
+<script src="./newpoint.js"></script>

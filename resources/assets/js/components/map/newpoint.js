@@ -7,12 +7,10 @@ export default {
         //
     },
     computed: {
-        ...mapGetters('map', [
-            'markers',
-        ])
+        //
     },
     mounted() {
-        this.initDisplayMap();
+        this.initInteractiveMap();
     }
 }
 
