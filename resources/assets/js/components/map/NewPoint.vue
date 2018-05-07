@@ -9,6 +9,11 @@
                         Широта: {{ selectedPoint.lat }}<br/>
                         Долгота: {{ selectedPoint.lng }}
                     </p>
+                    <p>
+                        <select class="custom-select">
+                            <option :value="category.id" v-for="category in categories" :key="category.id">{{ category.name }}</option>
+                        </select>
+                    </p>
                     <p><a href="#" @click.prevent="savePoint" class="btn btn-dark">СОХРАНИТЬ</a></p>
                 </div>
             </div>

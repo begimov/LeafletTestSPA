@@ -10,7 +10,8 @@ export default {
     },
     computed: {
         ...mapGetters('newpoint', [
-            'selectedPoint'
+            'selectedPoint',
+            'categories'
         ])
     },
     mounted() {

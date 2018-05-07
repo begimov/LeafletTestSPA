@@ -51080,6 +51080,20 @@ var render = function() {
               _vm._v(" "),
               _c("p", [
                 _c(
+                  "select",
+                  { staticClass: "custom-select" },
+                  _vm._l(_vm.categories, function(category) {
+                    return _c(
+                      "option",
+                      { key: category.id, domProps: { value: category.id } },
+                      [_vm._v(_vm._s(category.name))]
+                    )
+                  })
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c(
                   "a",
                   {
                     staticClass: "btn btn-dark",
@@ -51462,7 +51476,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint'])),
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint', 'categories'])),
     mounted: function mounted() {
         this.initInteractiveMap();
     }
@@ -51497,6 +51511,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   selectedPoint: null,
+  selectedPointCategory: null,
   options: {
     categories: [{ id: 1, name: 'Категория 1' }, { id: 2, name: 'Категория 2' }]
   },
@@ -51511,6 +51526,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
     selectedPoint: function selectedPoint(state) {
         return state.selectedPoint;
+    },
+    categories: function categories(state) {
+        return state.options.categories;
     }
 });
 
