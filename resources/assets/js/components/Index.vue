@@ -1,12 +1,29 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row mt-4 mb-3">
+            <div class="col">
+                <h1 class="text-secondary">Тестовое задание</h1>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <router-link :to="{name: 'leaflet-map'}" class="nav-link">Карта</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name: 'new-point'}" class="nav-link">Добавить точку</router-link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
             <div class="col">
                 <div class="card card-default">
-                    <div class="card-header">Тестовое задание</div>
-
-                    <!-- <router-link :to="{name: 'new-point'}" class="btn btn-primary">Создать продукт</router-link> -->
-
                     <div class="card-body">
                         <router-view></router-view>
                     </div>
@@ -17,9 +34,9 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            //
-        }
-    }
+export default {
+  mounted() {
+    //
+  }
+};
 </script>

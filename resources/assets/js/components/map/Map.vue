@@ -1,12 +1,8 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col">
-                <div class="card card-default">
-                    <div class="card-body">
-                        MAP
-                    </div>
-                </div>
+                MAP
             </div>
         </div>
     </div>
