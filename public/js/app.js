@@ -51062,7 +51062,7 @@ var render = function() {
       _vm._v(" "),
       _vm.selectedPoint
         ? _c("div", { staticClass: "card m-2" }, [
-            _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "card-body text-white bg-success" }, [
               _c("h2", [_vm._v("Отмечена новая точка:")]),
               _vm._v(" "),
               _c("p", { staticClass: "lead" }, [
@@ -51096,11 +51096,22 @@ var render = function() {
               ])
             ])
           ])
-        : _vm._e()
+        : _c("div", { staticClass: "card m-2" }, [_vm._m(0)])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body text-white bg-danger" }, [
+      _c("p", { staticClass: "mb-0" }, [
+        _vm._v("Кликните на карте, чтобы выбрать новую точку...")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -51365,6 +51376,10 @@ if (false) {
                 popup.setLatLng(e.latlng).setContent("Новая точка").openOn(mymap);
 
                 _this.updateSelectedPoint(e.latlng);
+            });
+
+            mymap.on('popupclose', function (e) {
+                _this.updateSelectedPoint(null);
             });
         }
     }

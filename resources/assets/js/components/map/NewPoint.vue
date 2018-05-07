@@ -3,13 +3,18 @@
         <div class="col">
             <div id="mapid" class="leaflet-map"></div>
             <div class="card m-2" v-if="selectedPoint">
-                <div class="card-body">
+                <div class="card-body text-white bg-success">
                     <h2>Отмечена новая точка:</h2>
                     <p class="lead">
                         Широта: {{ selectedPoint.lat }}<br/>
                         Долгота: {{ selectedPoint.lng }}
                     </p>
                     <p><a href="#" @click.prevent="savePoint" class="btn btn-dark">СОХРАНИТЬ</a></p>
+                </div>
+            </div>
+            <div class="card m-2" v-else>
+                <div class="card-body text-white bg-danger">
+                    <p class="mb-0">Кликните на карте, чтобы выбрать новую точку...</p>
                 </div>
             </div>
         </div>

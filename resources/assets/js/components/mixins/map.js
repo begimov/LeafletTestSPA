@@ -35,6 +35,10 @@ export default {
 
                 this.updateSelectedPoint(e.latlng);
             });
+
+            mymap.on('popupclose', (e) => {
+                this.updateSelectedPoint(null);
+            });
         }
     },
 }
