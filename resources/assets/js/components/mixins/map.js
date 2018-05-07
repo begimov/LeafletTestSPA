@@ -25,6 +25,13 @@ export default {
         initInteractiveMap() {
             const mymap = this.initBaseMap();
 
+            if (this.selectedPoint) {
+                Leaflet.popup()
+                    .setLatLng(this.selectedPoint)
+                    .setContent("Новая точка")
+                    .openOn(mymap);
+            }
+
             mymap.on('click', (e) => {
                 const popup = Leaflet.popup();
                 popup.setLatLng(e.latlng)

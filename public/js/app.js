@@ -51371,6 +51371,10 @@ if (false) {
 
             var mymap = this.initBaseMap();
 
+            if (this.selectedPoint) {
+                Leaflet.popup().setLatLng(this.selectedPoint).setContent("Новая точка").openOn(mymap);
+            }
+
             mymap.on('click', function (e) {
                 var popup = Leaflet.popup();
                 popup.setLatLng(e.latlng).setContent("Новая точка").openOn(mymap);
