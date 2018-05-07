@@ -24952,6 +24952,7 @@ module.exports = __webpack_require__(54);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__store__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(43);
 
 /**
@@ -24977,7 +24978,7 @@ Vue.component('index-component', __webpack_require__(51));
 
 var app = new Vue({
   el: '#app',
-  store: __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */],
+  store: __WEBPACK_IMPORTED_MODULE_0__store__["default"],
   router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */]
 });
 
@@ -47281,24 +47282,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_map__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(42);
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
-  modules: {
-    map: __WEBPACK_IMPORTED_MODULE_0__modules_map__["a" /* default */]
-  }
-}));
+throw new Error("Module build failed: Duplicate declaration \"map\"\n\n\u001b[0m \u001b[90m 1 | \u001b[39m\u001b[36mimport\u001b[39m map from \u001b[32m'./modules/map'\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m map from \u001b[32m'./modules/newpoint'\u001b[39m\n \u001b[90m   | \u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 3 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mVue\u001b[39m from \u001b[32m'vue'\u001b[39m\n \u001b[90m 4 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mVuex\u001b[39m from \u001b[32m'vuex'\u001b[39m\n \u001b[90m 5 | \u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 42 */
@@ -47309,7 +47296,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* unused harmony export install */
 /* unused harmony export mapState */
 /* unused harmony export mapMutations */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mapGetters; });
 /* unused harmony export mapActions */
 /* unused harmony export createNamespacedHelpers */
 /**
@@ -48242,7 +48229,7 @@ var index_esm = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (index_esm);
+/* unused harmony default export */ var _unused_webpack_default_export = (index_esm);
 
 
 /***/ }),
@@ -50960,7 +50947,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         //
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])('map', ['markers'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* mapGetters */])('map', ['markers'])),
     mounted: function mounted() {
         this.initDisplayMap();
     }
@@ -51322,76 +51309,25 @@ if (false) {
             });
         },
         initInteractiveMap: function initInteractiveMap() {
+            var _this = this;
+
             var mymap = this.initBaseMap();
 
-            mymap.on('click', onMapClick);
-
-            function onMapClick(e) {
+            mymap.on('click', function (e) {
                 var popup = Leaflet.popup();
                 popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
-            }
+                _this.test();
+            });
         }
     }
 });
 
 /***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__actions__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mutations__);
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  namespaced: true,
-  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
-  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
-  actions: __WEBPACK_IMPORTED_MODULE_2__actions___default.a,
-  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations___default.a
-});
-
-/***/ }),
-/* 65 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    markers: [[51.5, -0.086], [51.51, -0.087]],
-    isLoading: false
-});
-
-/***/ }),
-/* 66 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    markers: function markers(state) {
-        return state.markers;
-    }
-});
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
 /* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -51405,7 +51341,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
     methods: {
-        //
+        test: function test() {
+            console.log('TEST');
+        }
     },
     computed: {
         //

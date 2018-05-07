@@ -25,16 +25,15 @@ export default {
         initInteractiveMap() {
             const mymap = this.initBaseMap();
 
-            mymap.on('click', onMapClick);
-
-            function onMapClick(e) {
+            mymap.on('click', (e) => {
                 const popup = Leaflet.popup();
                 popup.setLatLng(e.latlng)
                     .setContent(
                         "You clicked the map at " + e.latlng.toString() 
                     )
                     .openOn(mymap);
-            }
+                this.test()
+            });
         }
     },
 }
