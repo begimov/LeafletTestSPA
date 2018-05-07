@@ -3,12 +3,8 @@
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card card-default">
-                    <div class="card-header">Тестовое задание</div>
-
-                    <!-- <router-link :to="{name: 'new-point'}" class="btn btn-primary">Создать продукт</router-link> -->
-
                     <div class="card-body">
-                        <router-view></router-view>
+                        MAP
                     </div>
                 </div>
             </div>
