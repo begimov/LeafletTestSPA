@@ -50981,7 +50981,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col" }, [
-        _c("div", { staticStyle: { height: "180px" }, attrs: { id: "mapid" } })
+        _c("div", { staticClass: "leaflet-map", attrs: { id: "mapid" } })
       ])
     ])
   }
