@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col">
                 <div class="card card-default">
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <router-view></router-view>
                     </div>
                 </div>
