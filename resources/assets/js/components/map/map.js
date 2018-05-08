@@ -13,11 +13,13 @@ export default {
     },
     watch: {
         points: function() { 
-            this.initDisplayMap()
+            this.initDisplayMap();
         }
     },
     mounted() {
-        //
+        if (this.points.length) {
+            this.initDisplayMap();
+        }
     }
 }
 
