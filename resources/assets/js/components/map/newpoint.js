@@ -6,7 +6,8 @@ export default {
     methods: {
         ...mapActions('newpoint', [
             'updateSelectedPoint',
-            'updateSelectedPointCategory'
+            'updateSelectedPointCategory',
+            'savePoint'
         ])
     },
     computed: {

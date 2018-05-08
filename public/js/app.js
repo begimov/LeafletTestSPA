@@ -48451,6 +48451,9 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(80);
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     updateSelectedPoint: function updateSelectedPoint(_ref, payload) {
         var commit = _ref.commit,
@@ -48463,6 +48466,14 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
             dispatch = _ref2.dispatch;
 
         commit('updateSelectedPointCategory', payload);
+    },
+    savePoint: function savePoint(_ref3, payload) {
+        var commit = _ref3.commit,
+            dispatch = _ref3.dispatch;
+
+        __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpoint.savePoint().then(function (res) {
+            // commit('setCategories', res.data.data);
+        });
     }
 });
 
@@ -51364,7 +51375,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint', 'updateSelectedPointCategory'])),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint', 'updateSelectedPointCategory', 'savePoint'])),
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint', 'categories', 'selectedPointCategory']), {
         'selectedCategory': {
             get: function get() {
@@ -51794,10 +51805,13 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__newpoint__ = __webpack_require__(83);
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    home: __WEBPACK_IMPORTED_MODULE_0__home__["a" /* default */]
+    home: __WEBPACK_IMPORTED_MODULE_0__home__["a" /* default */],
+    newpoint: __WEBPACK_IMPORTED_MODULE_1__newpoint__["a" /* default */]
 });
 
 /***/ }),
@@ -51843,6 +51857,22 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         var filteredPoints = _.filter(state.options.points, ['category.data.id', payload]);
         state.points = [].concat(_toConsumableArray(filteredPoints));
     }
+});
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  savePoint: function savePoint() {
+    return new Promise(function (resolve, reject) {
+      axios.post("/webapi/points").then(function (res) {
+        console.log(res);
+        // resolve(res)
+      });
+    });
+  }
 });
 
 /***/ })
