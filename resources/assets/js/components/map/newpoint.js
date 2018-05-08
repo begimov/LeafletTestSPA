@@ -15,7 +15,8 @@ export default {
             'selectedPoint',
             'categories',
             'selectedPointCategory',
-            'errors'
+            'errors',
+            'message'
         ]),
         'selectedCategory': {
             get () {

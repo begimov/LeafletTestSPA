@@ -10,5 +10,8 @@ export default {
     },
     errors(state) {
         return state.errors;
+    },
+    message(state) {
+        return state.message;
     }
 }
