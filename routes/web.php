@@ -17,5 +17,6 @@ Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
     Route::get('categories', 'Points\CategoryController@index');
 
     Route::get('points', 'Points\PointController@index');
+    Route::post('points', 'Points\PointController@store');
 });
 

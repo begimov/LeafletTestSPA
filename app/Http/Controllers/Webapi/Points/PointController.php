@@ -28,4 +28,9 @@ class PointController extends Controller
             ->transformWith(new PointTransformer)
             ->toArray();
     }
+
+    public function store()
+    {
+        //
+    }
 }
