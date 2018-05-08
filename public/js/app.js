@@ -48352,6 +48352,9 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
     points: function points(state, getters, rootState, rootGetters) {
         return rootGetters.points;
+    },
+    filteredPoints: function filteredPoints(state, getters, rootState, rootGetters) {
+        return rootGetters.filteredPoints;
     }
 });
 
@@ -51165,14 +51168,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         //
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('map', ['points'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('map', ['points', 'filteredPoints'])),
     watch: {
-        points: function points() {
+        filteredPoints: function filteredPoints() {
             this.initDisplayMap();
         }
     },
     mounted: function mounted() {
-        if (this.points.length) {
+        if (this.filteredPoints.length) {
             this.initDisplayMap();
         }
     }
@@ -51439,6 +51442,9 @@ if (false) {
     },
     points: function points(state) {
         return state.options.points;
+    },
+    filteredPoints: function filteredPoints(state) {
+        return state.points;
     }
 });
 
@@ -51474,6 +51480,7 @@ if (false) {
 
             __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].home.getPoints().then(function (res) {
                 commit('setPoints', res.data.data);
+                commit('setFilteredPoints', res.data.data);
             });
         });
     }
@@ -51735,6 +51742,9 @@ if (false) {
     },
     setPoints: function setPoints(state, payload) {
         state.options.points = payload;
+    },
+    setFilteredPoints: function setFilteredPoints(state, payload) {
+        state.points = payload;
     }
 });
 

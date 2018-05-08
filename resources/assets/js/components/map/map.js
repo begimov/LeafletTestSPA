@@ -9,15 +9,16 @@ export default {
     computed: {
         ...mapGetters('map', [
             'points',
+            'filteredPoints',
         ])
     },
     watch: {
-        points: function() { 
+        filteredPoints: function() { 
             this.initDisplayMap();
         }
     },
     mounted() {
-        if (this.points.length) {
+        if (this.filteredPoints.length) {
             this.initDisplayMap();
         }
     }

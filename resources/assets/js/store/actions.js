@@ -7,6 +7,7 @@ export default {
 
             api.home.getPoints().then(res => {
                 commit('setPoints', res.data.data);
+                commit('setFilteredPoints', res.data.data);
             });
         });
     },

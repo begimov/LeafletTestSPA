@@ -4,5 +4,8 @@ export default {
     },
     points(state) {
         return state.options.points;
+    },
+    filteredPoints(state) {
+        return state.points;
     }
 }

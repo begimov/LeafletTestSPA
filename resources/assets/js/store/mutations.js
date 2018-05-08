@@ -4,5 +4,8 @@ export default {
     },
     setPoints(state, payload) {
         state.options.points = payload;
+    },
+    setFilteredPoints(state, payload) {
+        state.points = payload;
     }
 }
