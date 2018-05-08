@@ -8,6 +8,7 @@ export default {
         commit('updateSelectedPointCategory', payload);
     },
     savePoint({ commit, state }) {
+        commit('setIsLoading', true, {root: true});
         commit('setErrors', null);
         commit('setMessage', null);
         api.newpoint.savePoint({
@@ -15,8 +16,10 @@ export default {
             category: state.selectedPointCategory
         }).then(res => {
             commit('setMessage', 'Новая точка успешно сохранена');
+            commit('setIsLoading', false, {root: true});
         }).catch(err => {
             commit('setErrors', err.response.data.errors);
+            commit('setIsLoading', false, {root: true});
         });
     }
 }

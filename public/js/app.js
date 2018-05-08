@@ -48479,6 +48479,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
         var commit = _ref3.commit,
             state = _ref3.state;
 
+        commit('setIsLoading', true, { root: true });
         commit('setErrors', null);
         commit('setMessage', null);
         __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpoint.savePoint({
@@ -48486,8 +48487,10 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
             category: state.selectedPointCategory
         }).then(function (res) {
             commit('setMessage', 'Новая точка успешно сохранена');
+            commit('setIsLoading', false, { root: true });
         }).catch(function (err) {
             commit('setErrors', err.response.data.errors);
+            commit('setIsLoading', false, { root: true });
         });
     }
 });
@@ -51615,12 +51618,14 @@ if (false) {
         var commit = _ref.commit,
             dispatch = _ref.dispatch;
 
+        commit('setIsLoading', true);
         __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].home.getCategories().then(function (res) {
             commit('setCategories', res.data.data);
 
             __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].home.getPoints().then(function (res) {
                 commit('setPoints', res.data.data);
                 commit('setFilteredPoints', res.data.data);
+                commit('setIsLoading', false);
             });
         });
     }
@@ -51899,6 +51904,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     updateFilteredPoints: function updateFilteredPoints(state, payload) {
         var filteredPoints = _.filter(state.options.points, ['category.data.id', payload]);
         state.points = [].concat(_toConsumableArray(filteredPoints));
+    },
+    setIsLoading: function setIsLoading(state, payload) {
+        state.isLoading = payload;
     }
 });
 

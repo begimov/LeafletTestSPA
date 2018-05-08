@@ -11,5 +11,8 @@ export default {
     updateFilteredPoints(state, payload) {
         const filteredPoints = _.filter(state.options.points, ['category.data.id', payload]);
         state.points = [ ...filteredPoints ];
+    },
+    setIsLoading(state, payload) {
+        state.isLoading = payload;
     }
 }
