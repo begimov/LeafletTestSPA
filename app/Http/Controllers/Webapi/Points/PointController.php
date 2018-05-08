@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Points\PointRepository;
 
 use App\Transformers\Points\PointTransformer;
+use App\Http\Requests\Points\StorePointRequest;
 
 class PointController extends Controller
 {
@@ -29,7 +30,7 @@ class PointController extends Controller
             ->toArray();
     }
 
-    public function store(Request $request)
+    public function store(StorePointRequest $request)
     {
         $point = $this->points->store($request->all());
     }
