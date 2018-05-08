@@ -16,6 +16,8 @@ class EloquentPointRepository extends EloquentRepositoryAbstract implements Poin
 
     public function store($data)
     {
-        dd($data);
+        $this->entity->position = $data['position'];
+        $this->entity->category_id = $data['category'];
+        $this->entity->save();
     }
 }

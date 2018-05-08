@@ -3,6 +3,7 @@
 namespace App\Models\Points;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Point extends Model
 {
@@ -15,6 +16,11 @@ class Point extends Model
             'lat' => $point->lat,
             'lng' => $point->lng
         ];
+    }
+
+    public function setPositionAttribute($value)
+    {
+        $this->attributes['position'] = DB::raw("POINT({$value['lat']},{$value['lng']})");
     }
 
     public function category()
