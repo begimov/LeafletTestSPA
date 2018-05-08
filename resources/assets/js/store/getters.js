@@ -7,5 +7,8 @@ export default {
     },
     filteredPoints(state) {
         return state.points;
+    },
+    isLoading(state) {
+        return state.isLoading;
     }
 }

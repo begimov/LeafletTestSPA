@@ -51582,6 +51582,9 @@ if (false) {
     },
     filteredPoints: function filteredPoints(state) {
         return state.points;
+    },
+    isLoading: function isLoading(state) {
+        return state.isLoading;
     }
 });
 
@@ -51714,11 +51717,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['getInitialData'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['isLoading'])),
     mounted: function mounted() {
         this.getInitialData();
     }
@@ -51733,10 +51739,24 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "row mt-4 mb-3" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("div", {
+          class: { isActive: _vm.isLoading, loader: true, "loader-def": true }
+        }),
+        _vm._v(
+          "\n            " +
+            _vm._s(_vm.isLoading ? "AAA" : "") +
+            "\n            "
+        ),
+        _c("h1", { staticClass: "text-secondary" }, [
+          _vm._v("Тестовое задание")
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("nav", { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" }, [
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -51792,18 +51812,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-4 mb-3" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("h1", { staticClass: "text-secondary" }, [
-          _vm._v("Тестовое задание")
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
