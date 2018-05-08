@@ -48373,6 +48373,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
             dispatch = _ref.dispatch;
 
         commit('updateSelectedPointCategory', payload);
+        commit('updateFilteredPoints', payload, { root: true });
     }
 });
 
@@ -51217,8 +51218,10 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row py-3 px-5" }, [
       _c("div", { staticClass: "col" }, [
+        _c("label", [_vm._v("Фильтровать по категории:")]),
+        _vm._v(" "),
         _vm.categories.length
           ? _c(
               "select",
@@ -51822,6 +51825,10 @@ if (false) {
     },
     setFilteredPoints: function setFilteredPoints(state, payload) {
         state.points = payload;
+    },
+    updateFilteredPoints: function updateFilteredPoints(state, payload) {
+        var points = state.options.points;
+        // TODO: filtering points by category id
     }
 });
 

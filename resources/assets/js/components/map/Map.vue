@@ -5,8 +5,9 @@
                 <div id="mapid" class="leaflet-map"></div>
             </div>
         </div>
-        <div class="row">
+        <div class="row py-3 px-5">
             <div class="col">
+                <label>Фильтровать по категории:</label>
                 <select class="custom-select" v-if="categories.length" v-model="selectedCategory">
                     <option disabled value="0">Выберите категорию</option>
                     <option :value="category.id" v-for="category in categories" :key="category.id">{{ category.name }}</option>
