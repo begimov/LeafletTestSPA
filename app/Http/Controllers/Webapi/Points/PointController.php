@@ -29,8 +29,8 @@ class PointController extends Controller
             ->toArray();
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $this->points->store($request->all());
     }
 }

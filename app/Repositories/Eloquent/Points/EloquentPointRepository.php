@@ -13,4 +13,9 @@ class EloquentPointRepository extends EloquentRepositoryAbstract implements Poin
     {
         return Point::class;
     }
+
+    public function store($data)
+    {
+        dd($data);
+    }
 }

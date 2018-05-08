@@ -48467,11 +48467,14 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 
         commit('updateSelectedPointCategory', payload);
     },
-    savePoint: function savePoint(_ref3, payload) {
+    savePoint: function savePoint(_ref3) {
         var commit = _ref3.commit,
-            dispatch = _ref3.dispatch;
+            state = _ref3.state;
 
-        __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpoint.savePoint().then(function (res) {
+        __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpoint.savePoint({
+            position: state.selectedPoint,
+            category: state.selectedPointCategory
+        }).then(function (res) {
             // commit('setCategories', res.data.data);
         });
     }
@@ -51865,9 +51868,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  savePoint: function savePoint() {
+  savePoint: function savePoint(payload) {
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/points").then(function (res) {
+      axios.post("/webapi/points", payload).then(function (res) {
         console.log(res);
         // resolve(res)
       });
