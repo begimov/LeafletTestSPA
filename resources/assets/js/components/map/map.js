@@ -8,11 +8,16 @@ export default {
     },
     computed: {
         ...mapGetters('map', [
-            'markers',
+            'points',
         ])
     },
+    watch: {
+        points: function() { 
+            this.initDisplayMap()
+        }
+    },
     mounted() {
-        this.initDisplayMap();
+        //
     }
 }
 

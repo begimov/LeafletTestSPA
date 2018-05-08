@@ -1,7 +1,7 @@
 import api from './api'
 
 export default {
-    getInitialData({ commit, dispatch}) {
+    getInitialData({ commit, dispatch }) {
         api.home.getCategories().then(res => {
             commit('setCategories', res.data.data);
 

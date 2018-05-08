@@ -1,5 +1,8 @@
 export default {
     categories(state) {
         return state.options.categories;
+    },
+    points(state) {
+        return state.options.points;
     }
 }

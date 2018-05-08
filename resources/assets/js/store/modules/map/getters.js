@@ -1,5 +1,5 @@
 export default {
-    markers(state) {
-        return state.markers;
+    points(state, getters, rootState, rootGetters) {
+        return rootGetters.points;
     }
 }

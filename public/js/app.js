@@ -25904,8 +25904,8 @@ module.exports = Cancel;
         initDisplayMap: function initDisplayMap() {
             var mymap = this.initBaseMap();
 
-            this.markers.forEach(function (marker) {
-                Leaflet.marker(marker).addTo(mymap).bindPopup("Широта: " + marker[0] + "<br/>Долгота: " + marker[1]);
+            this.points.forEach(function (point) {
+                Leaflet.marker(point.position).addTo(mymap).bindPopup("Широта: " + point.position.lat + "<br/>Долгота: " + point.position.lng);
             });
         },
         initInteractiveMap: function initInteractiveMap() {
@@ -48350,8 +48350,8 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    markers: function markers(state) {
-        return state.markers;
+    points: function points(state, getters, rootState, rootGetters) {
+        return rootGetters.points;
     }
 });
 
@@ -51165,9 +51165,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         //
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('map', ['markers'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('map', ['points'])),
+    watch: {
+        points: function points() {
+            this.initDisplayMap();
+        }
+    },
     mounted: function mounted() {
-        this.initDisplayMap();
+        //
     }
 });
 
@@ -51429,6 +51434,9 @@ if (false) {
 /* harmony default export */ __webpack_exports__["a"] = ({
     categories: function categories(state) {
         return state.options.categories;
+    },
+    points: function points(state) {
+        return state.options.points;
     }
 });
 

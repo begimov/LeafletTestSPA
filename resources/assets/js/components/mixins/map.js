@@ -16,9 +16,9 @@ export default {
         initDisplayMap() {
             const mymap = this.initBaseMap();
 
-            this.markers.forEach(marker => {
-                Leaflet.marker(marker).addTo(mymap)
-                    .bindPopup("Широта: " + marker[0] + "<br/>Долгота: " + marker[1]);
+            this.points.forEach(point => {
+                Leaflet.marker(point.position).addTo(mymap)
+                    .bindPopup("Широта: " + point.position.lat + "<br/>Долгота: " + point.position.lng);
             });
         },
 
