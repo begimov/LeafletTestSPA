@@ -5,10 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\Contracts\Points\{ 
-    CategoryRepository
+    CategoryRepository,
+    PointRepository
 };
 use App\Repositories\Eloquent\Points\{ 
-    EloquentCategoryRepository
+    EloquentCategoryRepository,
+    EloquentPointRepository
 };
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -21,6 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(CategoryRepository::class, EloquentCategoryRepository::class);
+        $this->app->bind(PointRepository::class, EloquentPointRepository::class);
     }
     /**
      * Register the application services.
