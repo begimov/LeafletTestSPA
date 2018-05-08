@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\Contracts\Points\PointRepository;
 
+use App\Transformers\Points\PointTransformer;
+
 class PointController extends Controller
 {
     protected $points;
@@ -18,6 +20,11 @@ class PointController extends Controller
 
     public function index()
     {
-        //
+        $points = $this->points->get();
+
+        return fractal()
+            ->collection($points)
+            ->transformWith(new PointTransformer)
+            ->toArray();
     }
 }
