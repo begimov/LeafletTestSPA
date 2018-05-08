@@ -17,10 +17,10 @@ export default {
         ]),
         'selectedCategory': {
             get () {
-              return this.selectedPointCategory
+              return this.selectedPointCategory;
             },
             set (value) {
-              this.updateSelectedPointCategory(value)
+              this.updateSelectedPointCategory(value);
             }
         },
     },

@@ -48319,9 +48319,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__actions__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mutations__);
 
 
 
@@ -48331,8 +48329,8 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
   namespaced: true,
   state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
   getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
-  actions: __WEBPACK_IMPORTED_MODULE_2__actions___default.a,
-  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations___default.a
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
 });
 
 /***/ }),
@@ -48341,7 +48339,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    markers: [[51.5, -0.086], [51.51, -0.087]]
+    selectedPointCategory: 0
 });
 
 /***/ }),
@@ -48355,20 +48353,39 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
     },
     filteredPoints: function filteredPoints(state, getters, rootState, rootGetters) {
         return rootGetters.filteredPoints;
+    },
+    categories: function categories(state, getters, rootState, rootGetters) {
+        return rootGetters.categories;
+    },
+    selectedPointCategory: function selectedPointCategory(state) {
+        return state.selectedPointCategory;
     }
 });
 
 /***/ }),
 /* 47 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    updateSelectedPointCategory: function updateSelectedPointCategory(_ref, payload) {
+        var commit = _ref.commit,
+            dispatch = _ref.dispatch;
 
+        commit('updateSelectedPointCategory', payload);
+    }
+});
 
 /***/ }),
 /* 48 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    updateSelectedPointCategory: function updateSelectedPointCategory(state, payload) {
+        state.selectedPointCategory = payload;
+    }
+});
 
 /***/ }),
 /* 49 */
@@ -51165,15 +51182,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
-    methods: {
-        //
-    },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('map', ['points', 'filteredPoints'])),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('map', ['updateSelectedPointCategory'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('map', ['points', 'filteredPoints', 'categories', 'selectedPointCategory']), {
+        'selectedCategory': {
+            get: function get() {
+                return this.selectedPointCategory;
+            },
+            set: function set(value) {
+                this.updateSelectedPointCategory(value);
+            }
+        }
+    }),
     watch: {
         filteredPoints: function filteredPoints() {
             this.initDisplayMap();
         }
     },
+
     mounted: function mounted() {
         if (this.filteredPoints.length) {
             this.initDisplayMap();
@@ -51189,7 +51214,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _vm.categories.length
+          ? _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selectedCategory,
+                    expression: "selectedCategory"
+                  }
+                ],
+                staticClass: "custom-select",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedCategory = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { disabled: "", value: "0" } }, [
+                  _vm._v("Выберите категорию")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.categories, function(category) {
+                  return _c(
+                    "option",
+                    { key: category.id, domProps: { value: category.id } },
+                    [_vm._v(_vm._s(category.name))]
+                  )
+                })
+              ],
+              2
+            )
+          : _vm._e()
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
