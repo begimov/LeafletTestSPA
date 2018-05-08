@@ -20,7 +20,7 @@ class PointController extends Controller
 
     public function index()
     {
-        $points = $this->points->get();
+        $points = $this->points->with(['category'])->get();
 
         return fractal()
             ->collection($points)

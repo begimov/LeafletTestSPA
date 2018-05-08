@@ -19,6 +19,12 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface
         return $this->entity->get();
     }
 
+    public function with(array $relations)
+    {
+        $this->entity = $this->entity->with($relations);
+        return $this;
+    }
+
     protected function resolveEntity()
     {
         if (!method_exists($this, 'entity')) {
