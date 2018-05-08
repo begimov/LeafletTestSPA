@@ -26,7 +26,12 @@ export default {
 
             this.filteredPoints.forEach(point => {
                 this.markers.push(Leaflet.marker(point.position).addTo(this.mymap)
-                    .bindPopup("Широта: " + point.position.lat + "<br/>Долгота: " + point.position.lng));
+                    .bindPopup(
+                        "<b>Широта:</b> " + point.position.lat 
+                        + "<br/><b>Долгота:</b> " + point.position.lng
+                        + "<br/><b>Категория:</b> " + point.category.data.name
+                        + "<br/><b>Дата:</b> " + point.created_at
+                    ));
             });
         },
 

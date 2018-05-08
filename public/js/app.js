@@ -25916,7 +25916,7 @@ module.exports = Cancel;
             }
 
             this.filteredPoints.forEach(function (point) {
-                _this.markers.push(Leaflet.marker(point.position).addTo(_this.mymap).bindPopup("Широта: " + point.position.lat + "<br/>Долгота: " + point.position.lng));
+                _this.markers.push(Leaflet.marker(point.position).addTo(_this.mymap).bindPopup("<b>Широта:</b> " + point.position.lat + "<br/><b>Долгота:</b> " + point.position.lng + "<br/><b>Категория:</b> " + point.category.data.name + "<br/><b>Дата:</b> " + point.created_at));
             });
         },
         initInteractiveMap: function initInteractiveMap() {

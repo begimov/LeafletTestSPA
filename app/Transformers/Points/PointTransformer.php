@@ -13,6 +13,7 @@ class PointTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $point->id,
             'position' => $point->position,
+            'created_at' => $point->created_at->toDateTimeString()
         ];
     }
 
