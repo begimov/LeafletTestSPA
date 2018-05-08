@@ -48283,9 +48283,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__getters__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mutations__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(4);
 
 
 
@@ -48296,16 +48297,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 
-__WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
+__WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */].Store({
   modules: {
     map: __WEBPACK_IMPORTED_MODULE_0__modules_map__["a" /* default */],
     newpoint: __WEBPACK_IMPORTED_MODULE_1__modules_newpoint__["a" /* default */]
   },
   state: __WEBPACK_IMPORTED_MODULE_2__state__["a" /* default */],
   getters: __WEBPACK_IMPORTED_MODULE_3__getters__["a" /* default */],
-  actions: __WEBPACK_IMPORTED_MODULE_4__actions__["a" /* default */]
+  actions: __WEBPACK_IMPORTED_MODULE_4__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_5__mutations__["a" /* default */]
 }));
 
 /***/ }),
@@ -48338,8 +48341,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    markers: [[51.5, -0.086], [51.51, -0.087]],
-    isLoading: false
+    markers: [[51.5, -0.086], [51.51, -0.087]]
 });
 
 /***/ }),
@@ -48393,12 +48395,8 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  selectedPoint: null,
-  selectedPointCategory: 0,
-  options: {
-    categories: [{ id: 1, name: 'Категория 1' }, { id: 2, name: 'Категория 2' }]
-  },
-  isLoading: false
+    selectedPoint: null,
+    selectedPointCategory: 0
 });
 
 /***/ }),
@@ -48410,8 +48408,8 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
     selectedPoint: function selectedPoint(state) {
         return state.selectedPoint;
     },
-    categories: function categories(state) {
-        return state.options.categories;
+    categories: function categories(state, getters, rootState, rootGetters) {
+        return rootGetters.categories;
     },
     selectedPointCategory: function selectedPointCategory(state) {
         return state.selectedPointCategory;
@@ -51462,7 +51460,7 @@ if (false) {
             dispatch = _ref.dispatch;
 
         __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].home.getCategories().then(function (res) {
-            console.log(res);
+            commit('setCategories', res.data.data);
         });
     }
 });
@@ -51703,6 +51701,17 @@ if (false) {
       });
     });
   }
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    setCategories: function setCategories(state, payload) {
+        state.options.categories = payload;
+    }
 });
 
 /***/ })
