@@ -51455,12 +51455,16 @@ if (false) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    getCategories: function getCategories(_ref) {
+    getInitialData: function getInitialData(_ref) {
         var commit = _ref.commit,
             dispatch = _ref.dispatch;
 
         __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].home.getCategories().then(function (res) {
             commit('setCategories', res.data.data);
+
+            __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].home.getPoints().then(function (res) {
+                commit('setPoints', res.data.data);
+            });
         });
     }
 });
@@ -51560,9 +51564,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['getCategories'])),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['getInitialData'])),
     mounted: function mounted() {
-        this.getCategories();
+        this.getInitialData();
     }
 });
 
@@ -51700,6 +51704,13 @@ if (false) {
         resolve(res);
       });
     });
+  },
+  getPoints: function getPoints() {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/points").then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 
@@ -51711,6 +51722,9 @@ if (false) {
 /* harmony default export */ __webpack_exports__["a"] = ({
     setCategories: function setCategories(state, payload) {
         state.options.categories = payload;
+    },
+    setPoints: function setPoints(state, payload) {
+        state.options.points = payload;
     }
 });
 

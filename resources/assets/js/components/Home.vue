@@ -39,11 +39,11 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
     methods: {
         ...mapActions([
-            'getCategories'
+            'getInitialData'
         ])
     },
     mounted() {
-        this.getCategories();
+        this.getInitialData();
     }
 };
 </script>

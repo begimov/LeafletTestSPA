@@ -5,5 +5,12 @@ export default {
           resolve(res)
         })
       })
+    },
+    getPoints() {
+      return new Promise((resolve, reject) => {
+        axios.get(`/webapi/points`).then(res => {
+          resolve(res)
+        })
+      })
     }
   }
