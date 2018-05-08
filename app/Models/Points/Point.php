@@ -16,4 +16,9 @@ class Point extends Model
             'lng' => $point->lng
         ];
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

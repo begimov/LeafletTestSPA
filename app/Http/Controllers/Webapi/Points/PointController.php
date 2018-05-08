@@ -24,6 +24,7 @@ class PointController extends Controller
 
         return fractal()
             ->collection($points)
+            ->parseIncludes(['category'])
             ->transformWith(new PointTransformer)
             ->toArray();
     }
