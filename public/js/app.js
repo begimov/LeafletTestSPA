@@ -48426,7 +48426,8 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     selectedPoint: null,
-    selectedPointCategory: 0
+    selectedPointCategory: 0,
+    errors: null
 });
 
 /***/ }),
@@ -48443,6 +48444,9 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
     },
     selectedPointCategory: function selectedPointCategory(state) {
         return state.selectedPointCategory;
+    },
+    errors: function errors(state) {
+        return state.errors;
     }
 });
 
@@ -48471,11 +48475,14 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
         var commit = _ref3.commit,
             state = _ref3.state;
 
+        commit('setErrors', null);
         __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpoint.savePoint({
             position: state.selectedPoint,
             category: state.selectedPointCategory
         }).then(function (res) {
             // commit('setCategories', res.data.data);
+        }).catch(function (err) {
+            commit('setErrors', err.response.data.errors);
         });
     }
 });
@@ -48491,6 +48498,9 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
     },
     updateSelectedPointCategory: function updateSelectedPointCategory(state, payload) {
         state.selectedPointCategory = payload;
+    },
+    setErrors: function setErrors(state, payload) {
+        state.errors = payload;
     }
 });
 
@@ -51379,7 +51389,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_map__["a" /* default */]],
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])('newpoint', ['updateSelectedPoint', 'updateSelectedPointCategory', 'savePoint'])),
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint', 'categories', 'selectedPointCategory']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('newpoint', ['selectedPoint', 'categories', 'selectedPointCategory', 'errors']), {
         'selectedCategory': {
             get: function get() {
                 return this.selectedPointCategory;
@@ -51491,7 +51501,15 @@ var render = function() {
                   },
                   [_vm._v("СОХРАНИТЬ")]
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _vm.errors
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _vm._v(
+                      _vm._s(_vm.errors.category ? _vm.errors.category[0] : "")
+                    )
+                  ])
+                : _vm._e()
             ])
           ])
         : _c("div", { staticClass: "card m-2" }, [_vm._m(0)])
@@ -51871,8 +51889,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   savePoint: function savePoint(payload) {
     return new Promise(function (resolve, reject) {
       axios.post("/webapi/points", payload).then(function (res) {
-        console.log(res);
-        // resolve(res)
+        resolve(res);
+      }).catch(function (err) {
+        reject(err);
       });
     });
   }

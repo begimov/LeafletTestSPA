@@ -7,5 +7,8 @@ export default {
     },
     selectedPointCategory(state) {
         return state.selectedPointCategory;
+    },
+    errors(state) {
+        return state.errors;
     }
 }

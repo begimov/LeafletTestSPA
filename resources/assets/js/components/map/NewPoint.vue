@@ -16,6 +16,7 @@
                         </select>
                     </p>
                     <p><a href="#" @click.prevent="savePoint" class="btn btn-dark">СОХРАНИТЬ</a></p>
+                    <div class="alert alert-danger" v-if="errors">{{ errors.category ? errors.category[0] : '' }}</div>
                 </div>
             </div>
             <div class="card m-2" v-else>

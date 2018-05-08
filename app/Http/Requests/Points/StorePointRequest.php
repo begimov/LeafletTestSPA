@@ -28,4 +28,16 @@ class StorePointRequest extends FormRequest
             'position' => 'required'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'category.exists' => 'Пожалуйста, выберите одну из категорий'
+        ];
+    }
 }

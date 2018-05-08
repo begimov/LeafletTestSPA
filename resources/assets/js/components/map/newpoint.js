@@ -14,7 +14,8 @@ export default {
         ...mapGetters('newpoint', [
             'selectedPoint',
             'categories',
-            'selectedPointCategory'
+            'selectedPointCategory',
+            'errors'
         ]),
         'selectedCategory': {
             get () {
