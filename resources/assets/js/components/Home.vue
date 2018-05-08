@@ -34,9 +34,16 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  mounted() {
-    //
-  }
+    methods: {
+        ...mapActions([
+            'getCategories'
+        ])
+    },
+    mounted() {
+        this.getCategories();
+    }
 };
 </script>

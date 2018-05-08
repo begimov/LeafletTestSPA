@@ -18,7 +18,7 @@ import router from './router'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('index-component', require('./components/Index.vue'));
+Vue.component('home-component', require('./components/Home.vue'));
 
 const app = new Vue({
     el: '#app',

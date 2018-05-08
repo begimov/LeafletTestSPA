@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <index-component />
+    <home-component />
 @endsection

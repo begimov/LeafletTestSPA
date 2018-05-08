@@ -3,6 +3,7 @@ import newpoint from './modules/newpoint'
 
 import state from './state'
 import getters from './getters'
+import actions from './actions'
 
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -16,4 +17,5 @@ export default new Vuex.Store({
   },
   state,
   getters,
+  actions,
 });
