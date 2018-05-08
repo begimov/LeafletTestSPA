@@ -31,6 +31,7 @@ export default {
     },
     
     mounted() {
+        this.initBaseMap();
         if (this.filteredPoints.length) {
             this.initDisplayMap();
         }

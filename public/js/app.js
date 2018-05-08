@@ -25888,44 +25888,53 @@ module.exports = Cancel;
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            mymap: null,
+            markers: []
+        };
+    },
+
     methods: {
         initBaseMap: function initBaseMap() {
-            var mymap = Leaflet.map('mapid').setView([51.505, -0.09], 13);
+            this.mymap = Leaflet.map('mapid').setView([51.505, -0.09], 13);
 
             Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmVnaW1vdiIsImEiOiJjamd3MzZkNG4xcGVvMndvZms4b3dweGQ3In0.jJoQoXTWOnFA5hBW83VReg', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 maxZoom: 18,
                 id: 'mapbox.streets',
                 accessToken: 'your.mapbox.access.token'
-            }).addTo(mymap);
-
-            return mymap;
+            }).addTo(this.mymap);
         },
         initDisplayMap: function initDisplayMap() {
-            var mymap = this.initBaseMap();
+            var _this = this;
 
-            this.points.forEach(function (point) {
-                Leaflet.marker(point.position).addTo(mymap).bindPopup("Широта: " + point.position.lat + "<br/>Долгота: " + point.position.lng);
+            if (this.markers.length) {
+                this.markers.forEach(function (marker) {
+                    _this.mymap.removeLayer(marker);
+                });
+            }
+
+            this.filteredPoints.forEach(function (point) {
+                _this.markers.push(Leaflet.marker(point.position).addTo(_this.mymap).bindPopup("Широта: " + point.position.lat + "<br/>Долгота: " + point.position.lng));
             });
         },
         initInteractiveMap: function initInteractiveMap() {
-            var _this = this;
-
-            var mymap = this.initBaseMap();
+            var _this2 = this;
 
             if (this.selectedPoint) {
-                Leaflet.popup().setLatLng(this.selectedPoint).setContent("Новая точка").openOn(mymap);
+                Leaflet.popup().setLatLng(this.selectedPoint).setContent("Новая точка").openOn(this.mymap);
             }
 
-            mymap.on('click', function (e) {
+            this.mymap.on('click', function (e) {
                 var popup = Leaflet.popup();
-                popup.setLatLng(e.latlng).setContent("Новая точка").openOn(mymap);
+                popup.setLatLng(e.latlng).setContent("Новая точка").openOn(_this2.mymap);
 
-                _this.updateSelectedPoint(e.latlng);
+                _this2.updateSelectedPoint(e.latlng);
             });
 
-            mymap.on('popupclose', function (e) {
-                _this.updateSelectedPoint(null);
+            this.mymap.on('popupclose', function (e) {
+                _this2.updateSelectedPoint(null);
             });
         }
     }
@@ -51201,6 +51210,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     mounted: function mounted() {
+        this.initBaseMap();
         if (this.filteredPoints.length) {
             this.initDisplayMap();
         }
@@ -51366,6 +51376,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     }),
     mounted: function mounted() {
+        this.initBaseMap();
         this.initInteractiveMap();
     }
 });
@@ -51816,6 +51827,8 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     setCategories: function setCategories(state, payload) {
         state.options.categories = payload;
@@ -51827,8 +51840,8 @@ if (false) {
         state.points = payload;
     },
     updateFilteredPoints: function updateFilteredPoints(state, payload) {
-        var points = state.options.points;
-        // TODO: filtering points by category id
+        var filteredPoints = _.filter(state.options.points, ['category.data.id', payload]);
+        state.points = [].concat(_toConsumableArray(filteredPoints));
     }
 });
 

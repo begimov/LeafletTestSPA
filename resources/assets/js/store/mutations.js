@@ -9,7 +9,7 @@ export default {
         state.points = payload;
     },
     updateFilteredPoints(state, payload) {
-        const points = state.options.points;
-        // TODO: filtering points by category id
+        const filteredPoints = _.filter(state.options.points, ['category.data.id', payload]);
+        state.points = [ ...filteredPoints ];
     }
 }

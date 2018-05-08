@@ -25,6 +25,7 @@ export default {
         },
     },
     mounted() {
+        this.initBaseMap();
         this.initInteractiveMap();
     }
 }
