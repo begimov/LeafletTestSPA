@@ -32,6 +32,6 @@ class PointController extends Controller
 
     public function store(StorePointRequest $request)
     {
-        $point = $this->points->store($request->all());
+        return $this->points->store($request->all());
     }
 }
