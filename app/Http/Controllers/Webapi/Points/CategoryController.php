@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\Contracts\Points\CategoryRepository;
 
+use App\Transformers\Points\CategoryTransformer;
+
 class CategoryController extends Controller
 {
     protected $categories;
@@ -18,6 +20,11 @@ class CategoryController extends Controller
 
     public function index()
     {
-        dd($this->categories->get());
+        $categories = $this->categories->get();
+
+        return fractal()
+            ->collection($categories)
+            ->transformWith(new CategoryTransformer)
+            ->toArray();
     }
 }
