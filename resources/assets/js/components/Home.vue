@@ -3,7 +3,6 @@
         <div class="row mt-4 mb-3">
             <div class="col">
                 <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
-                {{isLoading ?  'AAA' : ''}}
                 <h1 class="text-secondary">Тестовое задание</h1>
             </div>
         </div>
