@@ -48502,6 +48502,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex
             category: state.selectedPointCategory
         }).then(function (res) {
             commit('setMessage', 'Новая точка успешно сохранена');
+            commit('addNewPoint', res.data.data, { root: true });
             commit('setIsLoading', false, { root: true });
         }).catch(function (err) {
             commit('setErrors', err.response.data.errors);
@@ -48652,6 +48653,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     },
     setIsLoading: function setIsLoading(state, payload) {
         state.isLoading = payload;
+    },
+    addNewPoint: function addNewPoint(state, payload) {
+        state.options.points.push(payload);
     }
 });
 
@@ -51817,9 +51821,7 @@ var render = function() {
           class: { isActive: _vm.isLoading, loader: true, "loader-def": true }
         }),
         _vm._v(" "),
-        _c("h1", { staticClass: "text-secondary" }, [
-          _vm._v("Тестовое задание")
-        ])
+        _c("h1", { staticClass: "text-white" }, [_vm._v("Тестовое задание")])
       ])
     ]),
     _vm._v(" "),

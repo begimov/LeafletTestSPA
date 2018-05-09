@@ -32,6 +32,12 @@ class PointController extends Controller
 
     public function store(StorePointRequest $request)
     {
-        return $this->points->store($request->all());
+        $point = $this->points->store($request->all());
+
+        return fractal()
+            ->item($point)
+            ->parseIncludes(['category'])
+            ->transformWith(new PointTransformer)
+            ->toArray();
     }
 }

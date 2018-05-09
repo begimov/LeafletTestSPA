@@ -16,6 +16,7 @@ export default {
             category: state.selectedPointCategory
         }).then(res => {
             commit('setMessage', 'Новая точка успешно сохранена');
+            commit('addNewPoint', res.data.data, {root: true});
             commit('setIsLoading', false, {root: true});
         }).catch(err => {
             commit('setErrors', err.response.data.errors);
