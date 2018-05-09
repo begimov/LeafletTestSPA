@@ -51794,7 +51794,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -51815,13 +51814,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row mt-4 mb-3" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col" }, [
         _c("div", {
           class: { isActive: _vm.isLoading, loader: true, "loader-def": true }
-        }),
-        _vm._v(" "),
-        _c("h1", { staticClass: "text-white" }, [_vm._v("Тестовое задание")])
+        })
       ])
     ]),
     _vm._v(" "),

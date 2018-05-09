@@ -1,9 +1,8 @@
 <template>
     <div class="container">
-        <div class="row mt-4 mb-3">
+        <div class="row mt-4">
             <div class="col">
                 <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
-                <h1 class="text-white">Тестовое задание</h1>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
